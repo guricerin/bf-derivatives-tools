@@ -1,6 +1,5 @@
 use super::jump_table::*;
 use super::memory::*;
-//use super::parser::*;
 use super::token::*;
 
 use std::io;
@@ -8,14 +7,11 @@ use std::result::Result;
 
 #[derive(Debug)]
 pub struct Interpreter {
-    // tokens: Vec<Token>,
-    // jump_table: JumpTable,
     memory: Memory,
 }
 
 impl Interpreter {
     pub fn new(mem_size: usize) -> Self {
-        //let jump_table = JumpTable::try_new(&tokens)?;
         let memory = Memory::new(mem_size);
         Self { memory: memory }
     }
@@ -23,7 +19,7 @@ impl Interpreter {
     pub fn run(&mut self, tokens: &Vec<Token>) -> Result<(), &'static str> {
         let len = tokens.len();
         let input = io::stdin();
-        let jump_table = JumpTable::try_new(&tokens)?;
+        let jump_table = JumpTable::new(&tokens)?;
         let mut pc = 0;
         while pc < len {
             let token = tokens[pc];
