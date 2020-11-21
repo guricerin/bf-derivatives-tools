@@ -8,4 +8,5 @@ pub enum Token {
     Read,
     LoopBegin,
     LoopEnd,
+    Ignore,
 }

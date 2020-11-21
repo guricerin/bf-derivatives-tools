@@ -1,7 +1,8 @@
 pub mod interpreter;
 mod jump_table;
 mod memory;
-mod token;
+//mod parser;
+pub mod token;
 
 #[cfg(test)]
 mod tests {
