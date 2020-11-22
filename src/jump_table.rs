@@ -17,7 +17,7 @@ impl JumpTable {
                         map.entry(i).or_insert(j);
                         map.entry(j).or_insert(i);
                     } else {
-                        return Err("loop-end-bracket has not pair!");
+                        return Err("loop-end has not pair!");
                     }
                 }
                 _ => (),
@@ -27,7 +27,7 @@ impl JumpTable {
         if begins.is_empty() {
             Ok(Self(map))
         } else {
-            Err("blacket is not balanced!")
+            Err("loop-pair is not balanced!")
         }
     }
 

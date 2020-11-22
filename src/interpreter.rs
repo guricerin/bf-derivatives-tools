@@ -22,8 +22,7 @@ impl Interpreter {
         let jump_table = JumpTable::new(&tokens)?;
         let mut pc = 0;
         while pc < len {
-            let token = tokens[pc];
-            match token {
+            match tokens[pc] {
                 Token::RShift => {
                     self.memory.rshift();
                 }

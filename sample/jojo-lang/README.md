@@ -1,0 +1,1 @@
+* original: http://kmaebashi.com/zakki/lang0003.html
