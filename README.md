@@ -29,7 +29,18 @@ $ cargo run -- -c /path/to/brainfuck/code/file
 }
 ```
 
-1. write the brainfuck derivative code.
+| JSON item | brainfuck command |
+|:---------:|:-----------------:|
+| rshift | > |
+| lshift | < |
+| inc | + |
+| dec | - |
+| write | . |
+| read | , |
+| loop_begin | [ |
+| loop_end | ] |
+
+2. write the brainfuck derivative code.
 
 ```
 ふるえるぞハート!
@@ -54,8 +65,9 @@ $ cargo run -- -c /path/to/brainfuck/code/file
 オラオラオラオラオラオラオラオラオラオラオラオラオラオラァ!
 ```
 
-1. run.
+3. run.
 
 ```bash
 $ cargo run -- -c /path/to/brainfuck/code/file -g /path/to/grammar/json/file
+hello, world.
 ```
