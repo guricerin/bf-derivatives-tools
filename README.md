@@ -40,7 +40,7 @@ $ cargo run -- -c /path/to/brainfuck/code/file
 | loop_begin | [ |
 | loop_end | ] |
 
-2. write the brainfuck derivative code.
+2. edit the text file and write the brainfuck derivative code.
 
 ```
 ふるえるぞハート!
@@ -68,6 +68,6 @@ $ cargo run -- -c /path/to/brainfuck/code/file
 3. run.
 
 ```bash
-$ cargo run -- -c /path/to/brainfuck/code/file -g /path/to/grammar/json/file
+$ cargo run -- -c /path/to/code/file -g /path/to/grammar/json/file
 hello, world.
 ```
