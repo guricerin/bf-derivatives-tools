@@ -2,7 +2,7 @@
 
 let's make your own brainfuck derivative.
 
-## setup
+## Setup
 
 ```bash
 $ git clone https://github.com/guricerin/brainfuck-maker
