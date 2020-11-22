@@ -24,16 +24,16 @@ impl Interpreter {
         while pc < len {
             match tokens[pc] {
                 Token::RShift => {
-                    self.memory.rshift();
+                    self.memory.rshift()?;
                 }
                 Token::LShift => {
-                    self.memory.lshift();
+                    self.memory.lshift()?;
                 }
                 Token::Inc => {
-                    self.memory.inc();
+                    self.memory.inc()?;
                 }
                 Token::Dec => {
-                    self.memory.dec();
+                    self.memory.dec()?;
                 }
                 Token::Write => {
                     let b = self.memory.get();

@@ -1,41 +1,61 @@
-type Data = u8;
+use std::result::Result;
 
 #[derive(Debug)]
 pub struct Memory {
-    bytes: Vec<Data>,
+    cells: Vec<u8>,
     ptr: usize,
 }
 
 impl Memory {
     pub fn new(mem_size: usize) -> Self {
         Self {
-            bytes: vec![0; mem_size],
+            cells: vec![0; mem_size],
             ptr: 0,
         }
     }
 
-    pub fn get(&self) -> Data {
-        self.bytes[self.ptr]
+    pub fn get(&self) -> u8 {
+        self.cells[self.ptr]
     }
 
-    pub fn rshift(&mut self) {
-        self.ptr = self.ptr + 1;
+    pub fn rshift(&mut self) -> Result<(), &'static str> {
+        let p = self.ptr;
+        if p == self.cells.len() {
+            return Err("cell pointer overflow!");
+        }
+        self.ptr = p + 1;
+        Ok(())
     }
 
-    pub fn lshift(&mut self) {
-        self.ptr = self.ptr - 1;
+    pub fn lshift(&mut self) -> Result<(), &'static str> {
+        let p = self.ptr;
+        if p == 0 {
+            return Err("cell pointer underflow!");
+        }
+        self.ptr = p - 1;
+        Ok(())
     }
 
-    pub fn inc(&mut self) {
-        self.bytes[self.ptr] = self.get().saturating_add(1);
+    pub fn inc(&mut self) -> Result<(), &'static str> {
+        let n = self.get();
+        if n == u8::MAX {
+            return Err("cell value overflow!");
+        }
+        self.cells[self.ptr] = n + 1;
+        Ok(())
     }
 
-    pub fn dec(&mut self) {
-        self.bytes[self.ptr] = self.get().saturating_sub(1);
+    pub fn dec(&mut self) -> Result<(), &'static str> {
+        let n = self.get();
+        if n == u8::MIN {
+            return Err("cell value underflow!");
+        }
+        self.cells[self.ptr] = n - 1;
+        Ok(())
     }
 
     pub fn read(&mut self, b: u8) {
-        self.bytes[self.ptr] = b;
+        self.cells[self.ptr] = b;
     }
 
     pub fn ready_loop_begin(&self) -> bool {
