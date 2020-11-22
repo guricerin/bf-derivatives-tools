@@ -1,5 +1,5 @@
 [package]
-name = "brainfuck_maker"
+name = "bfmaker"
 version = "0.1.0"
 authors = ["guricerin <chanbo1e9@gmail.com>"]
 edition = "2018"

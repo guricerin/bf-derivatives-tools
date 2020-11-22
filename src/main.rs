@@ -1,5 +1,5 @@
-use brainfuck_maker::interpreter::*;
-use brainfuck_maker::parser::*;
+use bfmaker::interpreter::*;
+use bfmaker::parser::*;
 use clap::Clap;
 use serde_json;
 use std::error::Error;
@@ -8,7 +8,7 @@ use std::path::PathBuf;
 use std::result::Result;
 
 #[derive(Clap, Debug)]
-#[clap(name = "brainfuck-maker", version = "0.1.0", author = "guricerin")]
+#[clap(name = "bfmaker", version = "0.1.0", author = "guricerin")]
 struct Opts {
     #[clap(short, long, name = "brainfuck src code file")]
     code_path: PathBuf,
