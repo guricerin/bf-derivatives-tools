@@ -36,13 +36,13 @@ impl Interpreter {
                 Token::Dec => {
                     self.memory.dec();
                 }
+                Token::Write => {
+                    print!("{}", self.memory.get() as char);
+                }
                 Token::Read => {
                     let mut buf = String::new();
                     input.read_line(&mut buf).expect("read line error");
                     self.memory.read(buf.as_bytes()[0]);
-                }
-                Token::Write => {
-                    print!("{}", self.memory.get() as char);
                 }
                 Token::LoopBegin => {
                     if self.memory.ready_loop_begin() {

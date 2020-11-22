@@ -1,11 +1,7 @@
-extern crate pest;
-#[macro_use]
-extern crate pest_derive;
-
+use brainfuck_maker::grammar::*;
 use brainfuck_maker::interpreter::*;
-use brainfuck_maker::token::*;
+use brainfuck_maker::parser::*;
 use clap::Clap;
-use pest::Parser;
 use std::error::Error;
 use std::fs;
 use std::io;
@@ -16,71 +12,32 @@ use std::result::Result;
 #[clap(name = "brainfuck-maker", version = "0.1.0", author = "guricerin")]
 struct Opts {
     #[clap(short, long, name = "brainfuck src code file")]
-    input: Option<PathBuf>,
+    code_path: PathBuf,
+    #[clap(short, long, name = "brainfuck grammar file")]
+    grammar_path: Option<PathBuf>,
 }
-
-#[derive(Parser)]
-#[grammar = "brainfuck.pest"]
-struct BFParser;
 
 fn main() -> Result<(), Box<dyn Error>> {
     let opts = Opts::parse();
-    match opts.input {
-        Some(src_file) => {
-            rep(&src_file)?;
-        }
-        None => {
-            repl()?;
-        }
+    let code = fs::read_to_string(opts.code_path)?;
+    //println!("content: \n{}", &program);
+    let mut parser = Parser::new(&code);
+    if let Some(grammar_path) = opts.grammar_path {
+        let grammar = Grammar::new(
+            "ふるえるぞハート!",
+            "燃えつきるほどヒート!!",
+            "オラ",
+            "無駄",
+            "ァ!",
+            "やれやれだぜ",
+            "おまえの次のセリフは「",
+            "」という!",
+        );
+        parser.replace(&grammar);
     }
-
-    Ok(())
-}
-
-fn rep(path: &PathBuf) -> Result<(), Box<dyn Error>> {
+    let tokens = parser.parse();
     let mut interpreter = Interpreter::new(30000);
-    let program = fs::read_to_string(path)?;
-    let tokens = parse(&program);
     interpreter.run(&tokens)?;
+
     Ok(())
-}
-
-fn repl() -> Result<(), Box<dyn Error>> {
-    let mut interpreter = Interpreter::new(30000);
-    loop {
-        print!("brainfuck>> ");
-        let mut code = String::new();
-        io::stdin().read_line(&mut code).ok();
-        let code = code.trim();
-        if code == "quit" {
-            break;
-        } else {
-            let tokens = parse(&code);
-            interpreter.run(&tokens)?;
-        }
-    }
-    Ok(())
-}
-
-fn parse(program: &str) -> Vec<Token> {
-    let pair = BFParser::parse(Rule::tokens, program)
-        .unwrap_or_else(|e| panic!("bf syntax error: \n{}", e))
-        .next()
-        .unwrap();
-
-    let v = pair
-        .into_inner()
-        .map(|token| match token.as_rule() {
-            Rule::rshift => Token::RShift,
-            Rule::lshift => Token::LShift,
-            Rule::inc => Token::Inc,
-            Rule::dec => Token::Dec,
-            Rule::read => Token::Read,
-            Rule::write => Token::Write,
-            Rule::loopbegin => Token::LoopBegin,
-            Rule::loopend => Token::LoopEnd,
-            _ => unreachable!(),
-        })
-        .collect::<Vec<Token>>();
-    v
 }
