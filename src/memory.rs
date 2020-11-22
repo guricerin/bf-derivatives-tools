@@ -1,6 +1,8 @@
+type Data = u8;
+
 #[derive(Debug)]
 pub struct Memory {
-    bytes: Vec<u8>,
+    bytes: Vec<Data>,
     ptr: usize,
 }
 
@@ -12,7 +14,7 @@ impl Memory {
         }
     }
 
-    pub fn get(&self) -> u8 {
+    pub fn get(&self) -> Data {
         self.bytes[self.ptr]
     }
 
@@ -25,11 +27,11 @@ impl Memory {
     }
 
     pub fn inc(&mut self) {
-        self.bytes[self.ptr] = self.get() + 1;
+        self.bytes[self.ptr] = self.get().saturating_add(1);
     }
 
     pub fn dec(&mut self) {
-        self.bytes[self.ptr] = self.get() - 1;
+        self.bytes[self.ptr] = self.get().saturating_sub(1);
     }
 
     pub fn read(&mut self, b: u8) {

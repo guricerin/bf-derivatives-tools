@@ -23,10 +23,9 @@ fn main() -> Result<(), Box<dyn Error>> {
     if let Some(grammar_path) = opts.grammar_path {
         let data = fs::read_to_string(grammar_path)?;
         let grammar = serde_json::from_str(&data)?;
-        parser.replace(&grammar);
+        parser.translate(&grammar);
     }
     let tokens = parser.parse();
-    println!("{:?}", &tokens);
     let mut interpreter = Interpreter::new(30000);
     interpreter.run(&tokens)?;
 

@@ -36,9 +36,11 @@ impl Interpreter {
                     self.memory.dec();
                 }
                 Token::Write => {
-                    print!("{}", self.memory.get() as char);
+                    let b = self.memory.get();
+                    print!("{}", b as char);
                 }
                 Token::Read => {
+                    print!("input a askii character>> ");
                     let mut buf = String::new();
                     input.read_line(&mut buf).expect("read line error");
                     self.memory.read(buf.as_bytes()[0]);
