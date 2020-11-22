@@ -2,12 +2,20 @@
 
 let's make your own brainfuck derivative.
 
+## setup
+
+```bash
+$ git clone https://github.com/guricerin/brainfuck-maker
+$ cd brainfuck-maker/
+$ cargo install --path .
+```
+
 ## Usage
 
 ### original brainfuck
 
 ```bash
-$ cargo run -- -c /path/to/brainfuck/code/file
+$ bfmaker -c /path/to/brainfuck/code/file
 ```
 
 ### your brainfuck derivative
@@ -68,6 +76,6 @@ $ cargo run -- -c /path/to/brainfuck/code/file
 3. run.
 
 ```bash
-$ cargo run -- -c /path/to/code/file -g /path/to/grammar/json/file
+$ bfmaker -c /path/to/code/file -g /path/to/grammar/json/file
 hello, world.
 ```
