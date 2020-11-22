@@ -2,6 +2,7 @@ use brainfuck_maker::grammar::*;
 use brainfuck_maker::interpreter::*;
 use brainfuck_maker::parser::*;
 use clap::Clap;
+use serde_json;
 use std::error::Error;
 use std::fs;
 use std::io;
@@ -23,16 +24,35 @@ fn main() -> Result<(), Box<dyn Error>> {
     //println!("content: \n{}", &program);
     let mut parser = Parser::new(&code);
     if let Some(grammar_path) = opts.grammar_path {
-        let grammar = Grammar::new(
-            "ふるえるぞハート!",
-            "燃えつきるほどヒート!!",
-            "オラ",
-            "無駄",
-            "ァ!",
-            "やれやれだぜ",
-            "おまえの次のセリフは「",
-            "」という!",
-        );
+        let data = r#"
+        {
+            "rshift": [
+              "ふるえるぞハート!" 
+            ], 
+            "lshift": [
+                "燃えつきるほどヒート!!"
+            ], 
+            "inc": [
+                "オラ"
+            ], 
+            "dec": [
+                "無駄"
+            ], 
+            "write": [
+                 "ァ!"
+            ], 
+            "read": [
+                "やれやれだぜ"
+            ], 
+            "loop_begin": [
+                "おまえの次のセリフは「"
+            ], 
+            "loop_end": [
+                "」という!"
+            ] 
+        }
+        "#;
+        let grammar = serde_json::from_str(data)?;
         parser.replace(&grammar);
     }
     let tokens = parser.parse();
