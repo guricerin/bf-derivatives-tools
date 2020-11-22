@@ -15,7 +15,7 @@ $ cargo install --path .
 ### original brainfuck
 
 ```bash
-$ bfmaker -c /path/to/brainfuck/code/file
+$ bfmaker /path/to/brainfuck/code/file
 ```
 
 ### your brainfuck derivative
@@ -76,6 +76,6 @@ $ bfmaker -c /path/to/brainfuck/code/file
 3. run.
 
 ```bash
-$ bfmaker -c /path/to/code/file -g /path/to/grammar/json/file
+$ bfmaker /path/to/code/file -g /path/to/grammar/json/file
 hello, world.
 ```

@@ -10,9 +10,9 @@ use std::result::Result;
 #[derive(Clap, Debug)]
 #[clap(name = "bfmaker", version = "0.1.0", author = "guricerin")]
 struct Opts {
-    #[clap(short, long, name = "brainfuck src code file")]
+    #[clap(name = "brainfuck-src-code-file")]
     code_path: PathBuf,
-    #[clap(short, long, name = "brainfuck grammar file")]
+    #[clap(short, long, name = "brainfuck-grammar-file")]
     grammar_path: Option<PathBuf>,
 }
 
