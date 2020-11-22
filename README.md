@@ -14,18 +14,18 @@ $ cargo run -- -c /path/to/brainfuck/code/file
 
 1. edit the json file and write grammar rules.
 
-- quote from http://kmaebashi.com/zakki/lang0003.html
+- the following sample is quoted from http://kmaebashi.com/zakki/lang0003.html
 
 ```json
 {
-    "rshift": "ふるえるぞハート!", // >
-    "lshift": "燃えつきるほどヒート!!", // <
-    "inc": "オラ", // +
-    "dec": "無駄", // -
-    "write": "ァ!", // .
-    "read": "やれやれだぜ", // ,
-    "loop_begin": "おまえの次のセリフは「", // [
-    "loop_end": "」という!" // ]
+    "rshift": "ふるえるぞハート!",
+    "lshift": "燃えつきるほどヒート!!",
+    "inc": "オラ",
+    "dec": "無駄",
+    "write": "ァ!",
+    "read": "やれやれだぜ",
+    "loop_begin": "おまえの次のセリフは「",
+    "loop_end": "」という!"
 }
 ```
 
