@@ -1,24 +1,39 @@
-# brainfuck-maker
+# bf-derivatives-tool
 
 let's make your own brainfuck derivative.
 
 ## Setup
 
 ```bash
-$ git clone https://github.com/guricerin/brainfuck-maker
-$ cd brainfuck-maker/
+$ git clone https://github.com/guricerin/bf-derivatives-tool
+$ cd bf-derivatives-tool/
 $ cargo install --path .
 ```
 
-## Usage
+## grammar json file format
 
-### original brainfuck
+| JSON item | brainfuck command |
+|:---------:|:-----------------:|
+| rshift | > |
+| lshift | < |
+| inc | + |
+| dec | - |
+| write | . |
+| read | , |
+| loop_begin | [ |
+| loop_end | ] |
+
+## bfinterpreter
+
+### Usage
+
+#### original brainfuck
 
 ```bash
-$ bfmaker /path/to/brainfuck/code/file
+$ bfinterpreter /path/to/brainfuck/code/file
 ```
 
-### your brainfuck derivative
+#### your brainfuck derivative
 
 1. edit the json file and write grammar rules.
 
@@ -36,17 +51,6 @@ $ bfmaker /path/to/brainfuck/code/file
     "loop_end": "」という!"
 }
 ```
-
-| JSON item | brainfuck command |
-|:---------:|:-----------------:|
-| rshift | > |
-| lshift | < |
-| inc | + |
-| dec | - |
-| write | . |
-| read | , |
-| loop_begin | [ |
-| loop_end | ] |
 
 2. edit the text file and write the brainfuck derivative code.
 
@@ -76,6 +80,10 @@ $ bfmaker /path/to/brainfuck/code/file
 3. run.
 
 ```bash
-$ bfmaker /path/to/code/file -g /path/to/grammar/json/file
+$ bfinterpreter /path/to/code/file -g /path/to/grammar/json/file
 hello, world.
 ```
+
+## bftranslator
+
+### Usage

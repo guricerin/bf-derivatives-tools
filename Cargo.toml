@@ -1,5 +1,5 @@
 [package]
-name = "bfmaker"
+name = "bf-derivatives-tool"
 version = "0.1.0"
 authors = ["guricerin <chanbo1e9@gmail.com>"]
 edition = "2018"
@@ -7,6 +7,14 @@ license-file = "LICENSE"
 readme = "README.md"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[[bin]]
+name = "bfinterpreter"
+path = "src/bin/bfinterpreter.rs"
+
+[[bin]]
+name = "bftranslator"
+path = "src/bin/bftranslator.rs"
 
 [dependencies]
 clap = "3.0.0-beta.2"

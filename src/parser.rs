@@ -14,29 +14,45 @@ impl Parser {
         }
     }
 
-    pub fn translate(&mut self, grammar: &Grammar) {
-        let pattern = Parser::make_pattern(grammar);
+    pub fn code(&self) -> String {
+        self.code.clone()
+    }
+
+    pub fn translate_to_bf(&mut self, from: &Grammar) {
+        let to = Grammar::bf();
+        self.translate(from, &to);
+    }
+
+    pub fn translate_from_bf(&mut self, to: &Grammar) {
+        let from = Grammar::bf();
+        self.translate(&from, &to);
+    }
+
+    pub fn translate(&mut self, from: &Grammar, to: &Grammar) {
+        let pattern = Parser::make_pattern(from);
         let translated = Regex::new(&pattern)
             .unwrap()
             .find_iter(&self.code)
             .map(|mat| {
                 let s = mat.as_str();
-                if s == grammar.rshift {
-                    ">"
-                } else if s == grammar.lshift {
-                    "<"
-                } else if s == grammar.inc {
-                    "+"
-                } else if s == grammar.dec {
-                    "-"
-                } else if s == grammar.write {
-                    "."
-                } else if s == grammar.read {
-                    ","
-                } else if s == grammar.loop_begin {
-                    "["
-                } else if s == grammar.loop_end {
-                    "]"
+                if s == from.rshift {
+                    &to.rshift
+                } else if s == from.lshift {
+                    &to.lshift
+                } else if s == from.inc {
+                    &to.inc
+                } else if s == from.dec {
+                    &to.dec
+                } else if s == from.write {
+                    &to.write
+                } else if s == from.read {
+                    &to.read
+                } else if s == from.loop_begin {
+                    &to.loop_begin
+                } else if s == from.loop_end {
+                    &to.loop_end
+                } else if s == " " || s == "\t" || s == "\n" || s == "\r\n" {
+                    s
                 } else {
                     ""
                 }
@@ -55,7 +71,7 @@ impl Parser {
         let loop_begin = regex::escape(&grammar.loop_begin);
         let loop_end = regex::escape(&grammar.loop_end);
         format!(
-            "{}|{}|{}|{}|{}|{}|{}|{}",
+            "{}|{}|{}|{}|{}|{}|{}|{}|\x20|\t|\n|\r\n",
             rshift, lshift, inc, dec, write, read, loop_begin, loop_end
         )
     }

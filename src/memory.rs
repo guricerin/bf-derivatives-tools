@@ -18,6 +18,10 @@ impl Memory {
         self.cells[self.ptr]
     }
 
+    pub fn set(&mut self, b: u8) {
+        self.cells[self.ptr] = b;
+    }
+
     pub fn rshift(&mut self) -> Result<(), &'static str> {
         let p = self.ptr;
         if p == self.cells.len() {
@@ -41,7 +45,7 @@ impl Memory {
         if n == u8::MAX {
             return Err("cell value overflow!");
         }
-        self.cells[self.ptr] = n + 1;
+        self.set(n + 1);
         Ok(())
     }
 
@@ -50,12 +54,8 @@ impl Memory {
         if n == u8::MIN {
             return Err("cell value underflow!");
         }
-        self.cells[self.ptr] = n - 1;
+        self.set(n - 1);
         Ok(())
-    }
-
-    pub fn read(&mut self, b: u8) {
-        self.cells[self.ptr] = b;
     }
 
     pub fn ready_loop_begin(&self) -> bool {

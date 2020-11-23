@@ -2,23 +2,28 @@ use super::jump_table::*;
 use super::memory::*;
 use super::token::*;
 
-use std::io;
+use std::io::{self};
 use std::result::Result;
 
 #[derive(Debug)]
-pub struct Interpreter {
+pub struct Interpreter<R, W> {
     memory: Memory,
+    reader: R,
+    writer: W,
 }
 
-impl Interpreter {
-    pub fn new(mem_size: usize) -> Self {
+impl<R: io::Read, W: io::Write> Interpreter<R, W> {
+    pub fn new(mem_size: usize, reader: R, writer: W) -> Self {
         let memory = Memory::new(mem_size);
-        Self { memory: memory }
+        Self {
+            memory: memory,
+            reader: reader,
+            writer: writer,
+        }
     }
 
     pub fn run(&mut self, tokens: &Vec<Token>) -> Result<(), &'static str> {
         let len = tokens.len();
-        let input = io::stdin();
         let jump_table = JumpTable::new(&tokens)?;
         let mut pc = 0;
         while pc < len {
@@ -37,13 +42,12 @@ impl Interpreter {
                 }
                 Token::Write => {
                     let b = self.memory.get();
-                    print!("{}", b as char);
+                    self.writer.write_all(&[b]).expect("write error");
                 }
                 Token::Read => {
-                    print!("input a askii character>> ");
-                    let mut buf = String::new();
-                    input.read_line(&mut buf).expect("read line error");
-                    self.memory.read(buf.as_bytes()[0]);
+                    let mut buf = [0];
+                    self.reader.read_exact(&mut buf).expect("read exact error");
+                    self.memory.set(buf[0]);
                 }
                 Token::LoopBegin => {
                     if self.memory.ready_loop_begin() {
