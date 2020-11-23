@@ -10,34 +10,15 @@ $ cd bf-derivatives-tool/
 $ cargo install --path .
 ```
 
-## grammar json file format
+## Usage
 
-| JSON item | brainfuck command |
-|:---------:|:-----------------:|
-| rshift | > |
-| lshift | < |
-| inc | + |
-| dec | - |
-| write | . |
-| read | , |
-| loop_begin | [ |
-| loop_end | ] |
+### Edit the json file and write grammar rules
 
-## bfinterpreter
-
-### Usage
-
-#### original brainfuck
+* the following example is quoted from http://kmaebashi.com/zakki/lang0003.html
 
 ```bash
-$ bfinterpreter /path/to/brainfuck/code/file
+$ vim jojo-grammar.json
 ```
-
-#### your brainfuck derivative
-
-1. edit the json file and write grammar rules.
-
-- the following sample is quoted from http://kmaebashi.com/zakki/lang0003.html
 
 ```json
 {
@@ -52,7 +33,32 @@ $ bfinterpreter /path/to/brainfuck/code/file
 }
 ```
 
-2. edit the text file and write the brainfuck derivative code.
+Grammar json file format: 
+
+| JSON item | brainfuck command |
+|:---------:|:-----------------:|
+| rshift | > |
+| lshift | < |
+| inc | + |
+| dec | - |
+| write | . |
+| read | , |
+| loop_begin | [ |
+| loop_end | ] |
+
+### Run the program
+
+#### Original brainfuck
+
+```bash
+$ bfinterpreter /path/to/brainfuck/code/file
+```
+
+#### Your brainfuck derivative
+
+```bash
+$ vim hello.jojo
+```
 
 ```
 ふるえるぞハート!
@@ -77,13 +83,24 @@ $ bfinterpreter /path/to/brainfuck/code/file
 オラオラオラオラオラオラオラオラオラオラオラオラオラオラァ!
 ```
 
-3. run.
+```bash
+$ bfinterpreter /path/to/hello.jojo -g /path/to/jojo-grammar.json
+```
+
+Output:
 
 ```bash
-$ bfinterpreter /path/to/code/file -g /path/to/grammar/json/file
 hello, world.
 ```
 
-## bftranslator
+### Translate bf code -> bf-derative code
 
-### Usage
+```bash
+$ bftranslator /path/to/bf-code-file/ -t /path/to/bf-derative-grammar.json
+```
+
+### Translate bf-derative code -> bf code
+
+```bash
+$ bftranslator /path/to/bf-derative-code-file/ -f /path/to/bf-derative-grammar.json
+```
