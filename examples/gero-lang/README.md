@@ -1,3 +1,3 @@
 # ゲロ言語
 
-Original: https://dic.nicovideo.jp/a/brainfuck%E6%96%B9%E8%A8%80
+Original: http://jeison.biz/casphy/bbs/read.php?cate=free&no=868&res=all (dead link)
