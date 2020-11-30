@@ -1,6 +1,6 @@
 # bf-derivatives-tool
 
-let's make your own brainfuck derivative.
+let's create your own brainfuck derivative.
 
 ## Setup
 
@@ -51,7 +51,7 @@ Grammar json file format:
 #### Original brainfuck
 
 ```bash
-$ bfinterpreter /path/to/brainfuck/code/file
+$ bfi /path/to/brainfuck/code/file
 ```
 
 #### Your brainfuck derivative
@@ -84,7 +84,7 @@ $ vim hello.jojo
 ```
 
 ```bash
-$ bfinterpreter /path/to/hello.jojo -g /path/to/jojo-grammar.json
+$ bfi /path/to/hello.jojo -g /path/to/jojo-grammar.json
 ```
 
 Output:
@@ -96,11 +96,11 @@ hello, world.
 ### Translate bf code -> bf-derative code
 
 ```bash
-$ bftranslator /path/to/bf-code-file/ -t /path/to/bf-derative-grammar.json
+$ bft /path/to/bf-code-file/ -t /path/to/bf-derative-grammar.json
 ```
 
 ### Translate bf-derative code -> bf code
 
 ```bash
-$ bftranslator /path/to/bf-derative-code-file/ -f /path/to/bf-derative-grammar.json
+$ bft /path/to/bf-derative-code-file/ -f /path/to/bf-derative-grammar.json
 ```

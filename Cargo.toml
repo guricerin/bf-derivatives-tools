@@ -9,12 +9,12 @@ readme = "README.md"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [[bin]]
-name = "bfinterpreter"
-path = "src/bin/bfinterpreter.rs"
+name = "bfi"
+path = "src/bin/bfi.rs"
 
 [[bin]]
-name = "bftranslator"
-path = "src/bin/bftranslator.rs"
+name = "bft"
+path = "src/bin/bft.rs"
 
 [dependencies]
 clap = "3.0.0-beta.2"
