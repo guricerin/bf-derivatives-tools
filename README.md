@@ -10,6 +10,11 @@ $ cd bf-derivatives-tool/
 $ cargo install --path .
 ```
 
+After installation, two commands will be available.
+
+* bfi
+* bft
+
 ## Usage
 
 ### Edit the json file and write grammar rules
