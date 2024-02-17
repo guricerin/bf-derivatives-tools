@@ -2,7 +2,7 @@
 name = "bf-derivatives-tool"
 version = "0.1.0"
 authors = ["guricerin <chanbo1e9@gmail.com>"]
-edition = "2018"
+edition = "2021"
 license-file = "LICENSE"
 readme = "README.md"
 
