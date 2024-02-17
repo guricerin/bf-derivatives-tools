@@ -6,7 +6,7 @@ edition = "2021"
 license-file = "LICENSE"
 readme = "README.md"
 description = "Let's create your own brainfuck derivative."
-keywords = ["brainfuck", "command-line-utilities"]
+keywords = ["brainfuck", "cli"]
 repository = "https://github.com/guricerin/bf-derivatives-tools"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
