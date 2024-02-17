@@ -8,6 +8,7 @@ use std::io;
 use std::path::PathBuf;
 use std::result::Result;
 
+/// brainfuck derivative interpreter
 #[derive(Parser, Debug)]
 #[command(author, version)]
 struct Args {

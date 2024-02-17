@@ -5,6 +5,7 @@ use std::error::Error;
 use std::fs;
 use std::path::PathBuf;
 
+/// brainfuck derivative translator
 #[derive(Parser, Debug)]
 #[command(author, version)]
 struct Args {
