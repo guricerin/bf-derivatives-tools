@@ -1,19 +1,21 @@
 # bf-derivatives-tool
 
-let's create your own brainfuck derivative.
+Let's create your own brainfuck derivative.
 
 ## Setup
 
 ```bash
-$ git clone https://github.com/guricerin/bf-derivatives-tool
-$ cd bf-derivatives-tool/
-$ cargo install --path .
+git clone git@github.com:guricerin/bf-derivatives-tool.git
+cd bf-derivatives-tool/
+cargo install --path .
 ```
 
 After installation, two commands will be available.
 
 * bfi
+  - brainfuck derivative interpreter
 * bft
+  - brainfuck derivative translator
 
 ## Usage
 
@@ -22,7 +24,7 @@ After installation, two commands will be available.
 * the following example is quoted from http://kmaebashi.com/zakki/lang0003.html
 
 ```bash
-$ vim jojo-grammar.json
+vim jojo-grammar.json
 ```
 
 ```json
@@ -40,29 +42,29 @@ $ vim jojo-grammar.json
 
 Grammar json file format: 
 
-| JSON item | brainfuck command |
-|:---------:|:-----------------:|
-| rshift | > |
-| lshift | < |
-| inc | + |
-| dec | - |
-| write | . |
-| read | , |
-| loop_begin | [ |
-| loop_end | ] |
+| JSON item  | brainfuck command |
+| :--------: | :---------------: |
+|   rshift   |         >         |
+|   lshift   |         <         |
+|    inc     |         +         |
+|    dec     |         -         |
+|   write    |         .         |
+|    read    |         ,         |
+| loop_begin |         [         |
+|  loop_end  |         ]         |
 
 ### Run the program
 
 #### Original brainfuck
 
 ```bash
-$ bfi /path/to/brainfuck/code/file
+bfi path/to/brainfuck/code/file
 ```
 
 #### Your brainfuck derivative
 
 ```bash
-$ vim hello.jojo
+vim hello.jojo
 ```
 
 ```
@@ -88,8 +90,10 @@ $ vim hello.jojo
 オラオラオラオラオラオラオラオラオラオラオラオラオラオラァ!
 ```
 
+#### Run interpreter
+
 ```bash
-$ bfi /path/to/hello.jojo -g /path/to/jojo-grammar.json
+bfi path/to/hello.jojo -g path/to/jojo-grammar.json
 ```
 
 Output:
@@ -98,14 +102,20 @@ Output:
 hello, world.
 ```
 
-### Translate bf code -> bf-derative code
+#### Translate bf code -> bf-derative code
 
 ```bash
-$ bft /path/to/bf-code-file/ -t /path/to/bf-derative-grammar.json
+bft path/to/bf-code-file/ -t path/to/bf-derative-grammar.json
 ```
 
-### Translate bf-derative code -> bf code
+#### Translate bf-derative code -> bf code
 
 ```bash
-$ bft /path/to/bf-derative-code-file/ -f /path/to/bf-derative-grammar.json
+bft path/to/bf-derative-code-file/ -f path/to/bf-derative-grammar.json
+```
+
+## Uninstall
+
+```bash
+cargo uninstall bf-derivatives-tool
 ```

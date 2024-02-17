@@ -1,8 +1,8 @@
 [package]
 name = "bf-derivatives-tool"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["guricerin <chanbo1e9@gmail.com>"]
-edition = "2018"
+edition = "2021"
 license-file = "LICENSE"
 readme = "README.md"
 
@@ -17,7 +17,7 @@ name = "bft"
 path = "src/bin/bft.rs"
 
 [dependencies]
-clap = "3.0.0-beta.2"
+clap = { version = "4.5.1", features = ["derive"] }
 regex = "1.4.2"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0.59"
