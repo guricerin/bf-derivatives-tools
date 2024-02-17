@@ -2,12 +2,10 @@
 
 Let's create your own brainfuck derivative.
 
-## Setup
+## Install
 
 ```bash
-git clone git@github.com:guricerin/bf-derivatives-tools.git
-cd bf-derivatives-tools/
-cargo install --path .
+cargo install bf-derivatives-tools
 ```
 
 After installation, two commands will be available.
