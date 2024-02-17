@@ -1,27 +1,32 @@
-use bf_derivatives_tool::parser::*;
-use clap::Clap;
+use bf_derivatives_tool::parser;
+use clap::Parser;
 use serde_json;
 use std::error::Error;
 use std::fs;
 use std::path::PathBuf;
 
-#[derive(Clap, Debug)]
-#[clap(name = env!("CARGO_BIN_NAME"), version = env!("CARGO_PKG_VERSION"), author = env!("CARGO_PKG_AUTHORS"))]
-struct Opts {
-    #[clap(name = "brainfuck-src-code-file")]
+#[derive(Parser, Debug)]
+#[command(author, version)]
+struct Args {
+    /// path/to/brainfuck/code/file
+    #[arg()]
     code_path: PathBuf,
-    #[clap(short = 'f', name = "translate-from-grammar-file")]
+
+    /// path/to/translate/from/grammar/file
+    #[arg(short = 'f')]
     from_grammar_path: Option<PathBuf>,
-    #[clap(short = 't', name = "translate-to-grammar-file")]
+
+    /// path/to/translate/to/grammar/file
+    #[arg(short = 't')]
     to_grammar_path: Option<PathBuf>,
 }
 
 fn main() -> Result<(), Box<dyn Error>> {
-    let opts = Opts::parse();
-    let code = fs::read_to_string(opts.code_path)?;
-    let mut parser = Parser::new(&code);
+    let args = Args::parse();
+    let code = fs::read_to_string(args.code_path)?;
+    let mut parser = parser::Parser::new(&code);
 
-    match (opts.from_grammar_path, opts.to_grammar_path) {
+    match (args.from_grammar_path, args.to_grammar_path) {
         (Some(from_path), Some(to_path)) => {
             let data = fs::read_to_string(from_path)?;
             let from_grammar = serde_json::from_str(&data)?;
@@ -40,7 +45,7 @@ fn main() -> Result<(), Box<dyn Error>> {
             parser.translate_from_bf(&to_grammar);
         }
         _ => {
-            println!("both -f and -t options can't be omitted.");
+            eprintln!("both -f and -t options can't be omitted.");
             std::process::exit(1);
         }
     }
