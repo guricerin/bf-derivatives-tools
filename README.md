@@ -113,3 +113,9 @@ bft path/to/bf-code-file/ -t path/to/bf-derative-grammar.json
 ```bash
 bft path/to/bf-derative-code-file/ -f path/to/bf-derative-grammar.json
 ```
+
+## Uninstall
+
+```bash
+cargo uninstall bf-derivatives-tool
+```
