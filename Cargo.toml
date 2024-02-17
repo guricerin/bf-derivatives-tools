@@ -1,10 +1,13 @@
 [package]
 name = "bf-derivatives-tools"
-version = "0.3.0"
-authors = ["guricerin <chanbo1e9@gmail.com>"]
+version = "0.3.1"
+authors = ["guricerin"]
 edition = "2021"
-license-file = "LICENSE"
+license = "MIT"
 readme = "README.md"
+description = "Let's create your own brainfuck derivative."
+keywords = ["brainfuck", "cli"]
+repository = "https://github.com/guricerin/bf-derivatives-tools"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
