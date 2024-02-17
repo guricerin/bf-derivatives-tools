@@ -1,12 +1,12 @@
-# bf-derivatives-tool
+# bf-derivatives-tools
 
 Let's create your own brainfuck derivative.
 
 ## Setup
 
 ```bash
-git clone git@github.com:guricerin/bf-derivatives-tool.git
-cd bf-derivatives-tool/
+git clone git@github.com:guricerin/bf-derivatives-tools.git
+cd bf-derivatives-tools/
 cargo install --path .
 ```
 
@@ -117,5 +117,5 @@ bft path/to/bf-derivative-code-file/ -f path/to/bf-derivative-grammar.json
 ## Uninstall
 
 ```bash
-cargo uninstall bf-derivatives-tool
+cargo uninstall bf-derivatives-tools
 ```

@@ -1,5 +1,5 @@
 [package]
-name = "bf-derivatives-tool"
+name = "bf-derivatives-tools"
 version = "0.2.0"
 authors = ["guricerin <chanbo1e9@gmail.com>"]
 edition = "2021"
