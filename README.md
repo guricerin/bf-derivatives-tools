@@ -102,16 +102,16 @@ Output:
 hello, world.
 ```
 
-#### Translate bf code -> bf-derative code
+#### Translate bf code -> bf-derivative code
 
 ```bash
-bft path/to/bf-code-file/ -t path/to/bf-derative-grammar.json
+bft path/to/bf-code-file/ -t path/to/bf-derivative-grammar.json
 ```
 
-#### Translate bf-derative code -> bf code
+#### Translate bf-derivative code -> bf code
 
 ```bash
-bft path/to/bf-derative-code-file/ -f path/to/bf-derative-grammar.json
+bft path/to/bf-derivative-code-file/ -f path/to/bf-derivative-grammar.json
 ```
 
 ## Uninstall
