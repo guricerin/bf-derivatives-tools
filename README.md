@@ -114,6 +114,8 @@ bft path/to/bf-code-file/ -t path/to/bf-derivative-grammar.json
 bft path/to/bf-derivative-code-file/ -f path/to/bf-derivative-grammar.json
 ```
 
+The results will be output to stdout.  
+
 ## Uninstall
 
 ```bash

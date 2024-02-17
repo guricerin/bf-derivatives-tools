@@ -8,8 +8,9 @@ use std::io;
 use std::path::PathBuf;
 use std::result::Result;
 
+/// brainfuck derivative interpreter
 #[derive(Parser, Debug)]
-#[command(author, version)]
+#[command(version)]
 struct Args {
     /// path/to/brainfuck/code/file
     #[arg()]
