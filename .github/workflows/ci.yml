@@ -6,9 +6,8 @@ on:
 
 jobs:
   Test:
-    name: cargo test
     runs-on: ubuntu-22.04
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
       - uses: actions-rust-lang/setup-rust-toolchain@v1
@@ -16,9 +15,8 @@ jobs:
 
   # Check formatting with rustfmt
   Formatting:
-    name: cargo fmt
     runs-on: ubuntu-22.04
-    timeout-minutes: 10
+    timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
       # Ensure rustfmt is installed and setup problem matcher
