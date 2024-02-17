@@ -1,4 +1,4 @@
-use bf_derivatives_tool::parser;
+use bf_derivatives_tools::parser;
 use clap::Parser;
 use serde_json;
 use std::error::Error;
