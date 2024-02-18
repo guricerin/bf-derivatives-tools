@@ -1,5 +1,4 @@
-use bf_derivatives_tools::interpreter;
-use bf_derivatives_tools::parser;
+use bf_derivatives_tools::{interpreter, parser};
 use clap::Parser;
 use serde_json;
 use std::error::Error;
@@ -34,7 +33,7 @@ fn main() -> Result<(), Box<dyn Error>> {
     let tokens = parser.parse();
     let stdin = io::stdin();
     let stdout = io::stdout();
-    let mut interpreter = interpreter::Interpreter::new(30000, stdin, stdout);
+    let mut interpreter = interpreter::Interpreter::new(30000, stdin.lock(), stdout.lock());
     interpreter.run(&tokens)?;
 
     Ok(())

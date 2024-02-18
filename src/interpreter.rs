@@ -22,6 +22,10 @@ impl<R: io::Read, W: io::Write> Interpreter<R, W> {
         }
     }
 
+    pub fn writer(&self) -> &W {
+        &self.writer
+    }
+
     pub fn run(&mut self, tokens: &Vec<Token>) -> Result<(), &'static str> {
         let len = tokens.len();
         let jump_table = JumpTable::new(&tokens)?;
