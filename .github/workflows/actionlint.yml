@@ -1,0 +1,17 @@
+name: Actionlint
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  Actionlint:
+    runs-on: ubuntu-22.04
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - id: get_actionlint
+        shell: bash
+        run: bash <(curl https://raw.githubusercontent.com/rhysd/actionlint/main/scripts/download-actionlint.bash)
+      - shell: bash
+        run: ${{ steps.get_actionlint.outputs.executable }} -color -shellcheck=
