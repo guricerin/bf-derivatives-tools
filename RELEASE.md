@@ -1,5 +1,10 @@
 # How to release
 
+## Update version
+
+- Edit: `Cargo.toml`
+- Run: `cargo update -w`
+
 ## Add tag
 
 ```bash
