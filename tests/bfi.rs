@@ -27,4 +27,6 @@ fn interpret_bz_code() {
     let result = interpreter.run(&tokens);
 
     assert!(result.is_ok());
+    let s = String::from_utf8(interpreter.writer().clone()).unwrap();
+    assert_eq!(s, "Hello World!\n");
 }
