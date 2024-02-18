@@ -3,7 +3,7 @@
 ## Update version
 
 - Edit: `Cargo.toml`
-- Run: `cargo update -w`
+- Run: `cargo update [-w|--workspace]`
 
 ## Add tag
 
