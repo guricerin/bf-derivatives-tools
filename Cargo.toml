@@ -1,6 +1,6 @@
 [package]
 name = "bf-derivatives-tools"
-version = "0.3.1"
+version = "0.3.2"
 authors = ["guricerin"]
 edition = "2021"
 license = "MIT"
