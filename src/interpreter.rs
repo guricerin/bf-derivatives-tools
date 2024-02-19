@@ -16,9 +16,9 @@ impl<R: io::Read, W: io::Write> Interpreter<R, W> {
     pub fn new(mem_size: usize, reader: R, writer: W) -> Self {
         let memory = Memory::new(mem_size);
         Self {
-            memory: memory,
-            reader: reader,
-            writer: writer,
+            memory,
+            reader,
+            writer,
         }
     }
 
@@ -28,7 +28,7 @@ impl<R: io::Read, W: io::Write> Interpreter<R, W> {
 
     pub fn run(&mut self, tokens: &Vec<Token>) -> Result<(), &'static str> {
         let len = tokens.len();
-        let jump_table = JumpTable::new(&tokens)?;
+        let jump_table = JumpTable::new(tokens)?;
         let mut pc = 0;
         while pc < len {
             match tokens[pc] {
