@@ -13,6 +13,7 @@ pub struct Grammar {
 }
 
 impl Grammar {
+    #[allow(clippy::too_many_arguments)]
     pub fn new(
         rshift: &str,
         lshift: &str,

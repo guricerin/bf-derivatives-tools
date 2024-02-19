@@ -25,7 +25,7 @@ impl Parser {
 
     pub fn translate_from_bf(&mut self, to: &Grammar) {
         let from = Grammar::bf();
-        self.translate(&from, &to);
+        self.translate(&from, to);
     }
 
     pub fn translate(&mut self, from: &Grammar, to: &Grammar) {

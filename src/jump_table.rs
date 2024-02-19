@@ -6,7 +6,7 @@ use std::result::Result;
 pub struct JumpTable(HashMap<usize, usize>);
 
 impl JumpTable {
-    pub fn new(tokens: &Vec<Token>) -> Result<Self, &'static str> {
+    pub fn new(tokens: &[Token]) -> Result<Self, &'static str> {
         let mut begins = vec![];
         let mut map = HashMap::<usize, usize>::new();
         for (i, token) in tokens.iter().enumerate() {
