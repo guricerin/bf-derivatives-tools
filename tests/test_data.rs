@@ -1,7 +1,6 @@
-pub mod test_data {
-    // 本当はdead_codeじゃないけど警告出るのでやむなく付与
-    #[allow(dead_code)]
-    pub(crate) const BZ_CODE: &str = r#"ウルトラソウッ！B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、
+// 本当はdead_codeじゃないけど警告出るのでやむなく付与
+#[allow(dead_code)]
+pub(crate) const BZ_CODE: &str = r#"ウルトラソウッ！B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、
 （´.-`）ハァイ！B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、ウルトラソウッ！シンパイナイモンダイナイナイナイザッツライフイッツオーライ（■∋■）ヴェイ！
 ハァイ！B'zのLIVE-GYMにようこそ！！！ウルトラソウッ！B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、
 （´.-`）ハァイ！B'zの、B'zの、B'zの、B'zの、ウルトラソウッ！シンパイナイモンダイナイナイナイザッツライフイッツオーライ（■∋■）ヴェイ！
@@ -21,8 +20,8 @@ pub mod test_data {
 （´.-`）シンパイナイモンダイナイナイナイザッツライフイッツオーライ（■∋■）ヴェイ！
 B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、B'zのLIVE-GYMにようこそ！！！"#;
 
-    #[allow(dead_code)]
-    pub(crate) const BZ_GRAMMAR: &str = r#"
+#[allow(dead_code)]
+pub(crate) const BZ_GRAMMAR: &str = r#"
 {
     "rshift": "ウルトラソウッ！",
     "lshift": "ハァイ！",
@@ -35,8 +34,8 @@ B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、B'zの�
 }
     "#;
 
-    #[allow(dead_code)]
-    pub(crate) const BF_CODE: &str = r#">+++++++++
+#[allow(dead_code)]
+pub(crate) const BF_CODE: &str = r#">+++++++++
 [<++++++++>-]
 <.>+++++++
 [<++++>-]
@@ -55,4 +54,3 @@ B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、B'zの、B'zの�
 <+.
 [-]
 ++++++++++."#;
-}
